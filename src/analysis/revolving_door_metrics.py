@@ -40,9 +40,11 @@ class RevolvingDoorAnalyzer:
     def calculate_recidivism_by_payer(df: pd.DataFrame) -> pd.DataFrame:
         """
         Computes recidivism and dropout rates segmented by payment source.
-        Expects columns: 'primpay', 'reason', 'numprg', 'los'.
+        Expects columns: 'primpay', 'reason', 'numprg' (or 'noprior'), 'los'.
         """
         valid_df = df[df["primpay"].isin(PAYER_MAP.keys())].copy()
+        if "noprior" in valid_df.columns and "numprg" not in valid_df.columns:
+            valid_df["numprg"] = valid_df["noprior"]
         valid_df["payer_label"] = valid_df["primpay"].map(PAYER_MAP)
         valid_df["is_dropout_ama"] = (valid_df["reason"] == 2).astype(int)
         valid_df["is_high_recidivism"] = (valid_df["numprg"] >= 3).astype(int)
@@ -68,7 +70,8 @@ class RevolvingDoorAnalyzer:
         if total == 0:
             return {"total": 0, "revolving_door_index": 0.0}
 
-        high_prior = (df["numprg"] >= 3).sum()
+        numprg_series = df["numprg"] if "numprg" in df.columns else df.get("noprior", pd.Series(0, index=df.index))
+        high_prior = (numprg_series >= 3).sum()
         dropouts = (df["reason"] == 2).sum()
         rdi = (high_prior / total) * 100
 

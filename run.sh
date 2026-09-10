@@ -29,6 +29,12 @@ echo "🔍 Validating modules..."
 python3 -c "import src; print('✅ Package import verified')"
 
 echo "=================================================="
-echo "🎉 Druggie_buggie initialized successfully."
+echo "🎉 Druggie_buggie verified successfully."
+echo "   To launch the interactive forensic dashboard:"
+echo "   👉 python3 server.py"
 echo "=================================================="
+
+if [ "$1" = "serve" ]; then
+    python3 server.py
+fi
 

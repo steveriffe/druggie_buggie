@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Druggie_buggie | Rehabilitation Industry Forensic Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              500: '#10b981',
+              600: '#059669',
+              900: '#064e3b',
+            },
+            accent: {
+              400: '#f87171',
+              500: '#ef4444',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Navigation / Banner -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg">
+          DB
+        </div>
+        <div>
+          <span class="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+            Druggie_buggie
+            <span class="text-xs px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/60 font-mono">v1.0 Forensic</span>
+          </span>
+          <p class="text-xs text-slate-400">Capital Extraction & Recidivism in the Rehab Industry</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="inline-flex items-center gap-1.5 text-xs text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          BigQuery: <span class="mono text-slate-200">db1b-1 (us-west1)</span>
+        </span>
+        <a href="https://github.com/steveriffe/druggie_buggie" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition flex items-center gap-1.5 border border-slate-700">
+          GitHub Repo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero KPI Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2 w-full">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">CA Licensed Facilities</div>
+        <div class="mt-1 text-2xl font-bold text-white mono">2,266</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">21,342 statewide beds</div>
+      </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Orange County Facilities</div>
+        <div class="mt-1 text-2xl font-bold text-emerald-400 mono">298</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">2,044 beds (190 Riviera corridor)</div>
+      </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 border-l-2 border-l-amber-500">
+        <div class="text-xs font-medium text-amber-400 uppercase tracking-wider">Dana Point Focus</div>
+        <div class="mt-1 text-2xl font-bold text-amber-300 mono">10</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">70% single-family &le;6 beds (IMS)</div>
+      </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 border-l-2 border-l-rose-500">
+        <div class="text-xs font-medium text-rose-400 uppercase tracking-wider">OC Excluded Bad Actors</div>
+        <div class="mt-1 text-2xl font-bold text-rose-400 mono">188</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">HHS-OIG fraud & kickback bans</div>
+      </div>
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+        <div class="text-xs font-medium text-slate-400 uppercase tracking-wider">Revolving Door Rate</div>
+        <div class="mt-1 text-2xl font-bold text-purple-400 mono">67.1%</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">Prior treatment episodes in CA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main View Container & Tabs -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full flex-1">
+    <div class="border-b border-slate-800 flex space-x-8 mb-6">
+      <button onclick="switchTab('facilities')" id="tab-facilities" class="pb-3 border-b-2 border-emerald-500 text-emerald-400 font-semibold text-sm flex items-center gap-2">
+        <span>🏥</span> Licensed Facilities (Orange County & Dana Point)
+      </button>
+      <button onclick="switchTab('exclusions')" id="tab-exclusions" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2">
+        <span>⚖️</span> Federal Exclusions & Fraud Networks (188 Actors)
+      </button>
+      <button onclick="switchTab('revolving-door')" id="tab-revolving-door" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2">
+        <span>🔄</span> The Revolving Door (SAMHSA TEDS-D Attrition)
+      </button>
+    </div>
+
+    <!-- TAB 1: Facilities -->
+    <div id="view-facilities" class="space-y-4">
+      <div class="flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-900/40 p-3 rounded-xl border border-slate-800">
+        <div class="flex flex-wrap gap-2 items-center w-full sm:w-auto">
+          <input type="text" id="facility-search" placeholder="Search name, operator, or street..." oninput="filterFacilities()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 w-64">
+          <select id="facility-city-filter" onchange="filterFacilities()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+            <option value="ALL">All Municipalities</option>
+            <option value="DANA POINT">Dana Point (Special Focus)</option>
+            <option value="COSTA MESA">Costa Mesa</option>
+            <option value="NEWPORT BEACH">Newport Beach</option>
+            <option value="HUNTINGTON BEACH">Huntington Beach</option>
+            <option value="LAGUNA BEACH">Laguna Beach</option>
+            <option value="SAN CLEMENTE">San Clemente</option>
+            <option value="SANTA ANA">Santa Ana</option>
+          </select>
+          <select id="facility-type-filter" onchange="filterFacilities()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+            <option value="ALL">All Care Levels</option>
+            <option value="IMS">Incidental Medical Services (IMS Detox)</option>
+            <option value="SIX_BED">&le; 6 Bed Residential Loophole</option>
+          </select>
+        </div>
+        <div class="text-xs text-slate-400">
+          Showing <span id="facility-count" class="mono font-bold text-white">0</span> of 298 facilities
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/30">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-900/80 uppercase text-[10px] text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">Facility & Legal Entity</th>
+              <th class="py-3 px-4">Municipality</th>
+              <th class="py-3 px-4">Capacity</th>
+              <th class="py-3 px-4">Service Type</th>
+              <th class="py-3 px-4">Address</th>
+              <th class="py-3 px-4">License Status</th>
+            </tr>
+          </thead>
+          <tbody id="facilities-table-body" class="divide-y divide-slate-800/60 font-sans">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: Exclusions -->
+    <div id="view-exclusions" class="hidden space-y-4">
+      <div class="bg-rose-950/20 border border-rose-900/40 rounded-xl p-4 text-xs text-rose-300 flex items-start gap-3">
+        <span class="text-lg">⚠️</span>
+        <div>
+          <strong class="font-semibold text-rose-200">Federal Exclusion Intelligence (HHS-OIG LEIE)</strong>: 
+          Entities and individuals barred from federal and state programs due to felony convictions, patient brokering/kickbacks, illegal lab arrangements, or medical license revocations.
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 items-center justify-between bg-slate-900/40 p-3 rounded-xl border border-slate-800">
+        <div class="flex flex-wrap gap-2 items-center w-full sm:w-auto">
+          <input type="text" id="exclusion-search" placeholder="Search individual, business, or address..." oninput="filterExclusions()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-rose-500 w-64">
+          <select id="exclusion-city-filter" onchange="filterExclusions()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-rose-500">
+            <option value="ALL">All Cities</option>
+            <option value="DANA POINT">Dana Point (5)</option>
+            <option value="COSTA MESA">Costa Mesa (30)</option>
+            <option value="NEWPORT BEACH">Newport Beach (28)</option>
+            <option value="HUNTINGTON BEACH">Huntington Beach (42)</option>
+            <option value="LAGUNA BEACH">Laguna Beach (9)</option>
+            <option value="SAN CLEMENTE">San Clemente (13)</option>
+            <option value="SAN JUAN CAPISTRANO">San Juan Capistrano (5)</option>
+            <option value="SANTA ANA">Santa Ana (56)</option>
+          </select>
+          <select id="exclusion-type-filter" onchange="filterExclusions()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-rose-500">
+            <option value="ALL">All Offenses</option>
+            <option value="1128a1">Felony Fraud / Kickbacks (1128a1)</option>
+            <option value="1128a3">Financial Misconduct / Embezzlement (1128a3)</option>
+            <option value="1128b4">License Revocation (1128b4)</option>
+          </select>
+        </div>
+        <div class="text-xs text-slate-400">
+          Showing <span id="exclusion-count" class="mono font-bold text-white">0</span> of 188 actors
+        </div>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/30">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-900/80 uppercase text-[10px] text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-4">Subject / Entity</th>
+              <th class="py-3 px-4">City</th>
+              <th class="py-3 px-4">Specialty / Role</th>
+              <th class="py-3 px-4">Statutory Authority</th>
+              <th class="py-3 px-4">Address</th>
+              <th class="py-3 px-4">Exclusion Date</th>
+            </tr>
+          </thead>
+          <tbody id="exclusions-table-body" class="divide-y divide-slate-800/60 font-sans">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: Revolving Door Analytics -->
+    <div id="view-revolving-door" class="hidden space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Discharge Outcome Donut -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-sm text-white">Discharge Outcomes: The Attrition Cliff</h3>
+            <span class="text-xs text-slate-400 mono">108,779 CA/OR Episodes</span>
+          </div>
+          <div class="h-64 flex items-center justify-center">
+            <canvas id="chart-outcomes"></canvas>
+          </div>
+          <p class="text-xs text-slate-400 mt-4 leading-relaxed">
+            <strong class="text-rose-400">43.5% of all episodes</strong> end in premature dropout or departure Against Medical Advice (AMA), while only 22.7% reach planned completion.
+          </p>
+        </div>
+
+        <!-- Length of Stay vs Dropout Bar Chart -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-semibold text-sm text-white">Length of Stay (Days) & Dropout Rate by Setting</h3>
+            <span class="text-xs text-slate-400 mono">SAMHSA TEDS-D</span>
+          </div>
+          <div class="h-64 flex items-center justify-center">
+            <canvas id="chart-settings"></canvas>
+          </div>
+          <p class="text-xs text-slate-400 mt-4 leading-relaxed">
+            Long-term residential and IOP modalities suffer from <strong class="text-amber-400">49% to 51% dropout rates</strong> as insurance authorization windows expire.
+          </p>
+        </div>
+      </div>
+
+      <!-- Substance Breakdown & Recidivism -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <h3 class="font-semibold text-sm text-white mb-3">The Revolving Door Dynamics (California Benchmark)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-700/60">
+            <div class="text-xs text-slate-400">Recidivism Velocity</div>
+            <div class="text-2xl font-bold text-emerald-400 mono mt-1">67.1%</div>
+            <div class="text-xs text-slate-400 mt-1">Clients report 1 or more prior treatment admissions before current intake.</div>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-700/60">
+            <div class="text-xs text-slate-400">Detox Readmission Pressure</div>
+            <div class="text-2xl font-bold text-amber-400 mono mt-1">7.2 Days</div>
+            <div class="text-xs text-slate-400 mt-1">Average length of stay in free-standing residential detox before discharge/transfer.</div>
+          </div>
+          <div class="p-4 rounded-lg bg-slate-800/50 border border-slate-700/60">
+            <div class="text-xs text-slate-400">Planned Completion Rate</div>
+            <div class="text-2xl font-bold text-rose-400 mono mt-1">22.7%</div>
+            <div class="text-xs text-slate-400 mt-1">Fewer than 1 in 4 patients complete the full planned course of treatment.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-4 mt-auto bg-slate-900/40 text-center text-xs text-slate-500">
+    Project Druggie_buggie &bull; Forensic Healthcare Analytics &bull; Designed for Steve Riffe
+  </footer>
+
+  <script>
+    let globalData = null;
+    let chartOutcomesInstance = null;
+    let chartSettingsInstance = null;
+
+    async function loadData() {
+      try {
+        const res = await fetch('data/dashboard_data.json');
+        globalData = await res.json();
+        renderFacilities();
+        renderExclusions();
+        initCharts();
+      } catch (err) {
+        console.error('Error loading dashboard data:', err);
+      }
+    }
+
+    function switchTab(tabId) {
+      document.getElementById('view-facilities').classList.add('hidden');
+      document.getElementById('view-exclusions').classList.add('hidden');
+      document.getElementById('view-revolving-door').classList.add('hidden');
+
+      document.getElementById('tab-facilities').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
+      document.getElementById('tab-exclusions').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
+      document.getElementById('tab-revolving-door').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
+
+      document.getElementById('view-' + tabId).classList.remove('hidden');
+      document.getElementById('tab-' + tabId).className = 'pb-3 border-b-2 border-emerald-500 text-emerald-400 font-semibold text-sm flex items-center gap-2';
+    }
+
+    function renderFacilities() {
+      if (!globalData || !globalData.facilities) return;
+      const tbody = document.getElementById('facilities-table-body');
+      tbody.innerHTML = '';
+
+      const search = (document.getElementById('facility-search').value || '').toLowerCase();
+      const cityFilter = document.getElementById('facility-city-filter').value;
+      const typeFilter = document.getElementById('facility-type-filter').value;
+
+      const filtered = globalData.facilities.filter(f => {
+        const matchesSearch = !search || 
+          (f.facility_name && f.facility_name.toLowerCase().includes(search)) ||
+          (f.legal_entity_name && f.legal_entity_name.toLowerCase().includes(search)) ||
+          (f.address_line && f.address_line.toLowerCase().includes(search));
+
+        const matchesCity = (cityFilter === 'ALL') || (f.city && f.city.toUpperCase() === cityFilter);
+
+        let matchesType = true;
+        if (typeFilter === 'IMS') matchesType = f.incidental_medical_services === true;
+        if (typeFilter === 'SIX_BED') matchesType = (f.licensed_capacity || 0) <= 6;
+
+        return matchesSearch && matchesCity && matchesType;
+      });
+
+      document.getElementById('facility-count').innerText = filtered.length;
+
+      filtered.slice(0, 100).forEach(f => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-800/40 transition';
+
+        const isDP = f.is_dana_point;
+        const imsBadge = f.incidental_medical_services 
+          ? '<span class="px-1.5 py-0.5 rounded text-[10px] bg-amber-950 text-amber-300 border border-amber-800/60 font-mono">IMS Detox</span>'
+          : '<span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400 font-mono">Residential</span>';
+
+        const dpBadge = isDP ? '<span class="ml-2 px-1.5 py-0.5 rounded text-[10px] bg-purple-950 text-purple-300 border border-purple-800/60 font-mono">Dana Point</span>' : '';
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-medium text-white">
+            <div>${f.facility_name || 'UNKNOWN'}${dpBadge}</div>
+            <div class="text-[11px] text-slate-400">${f.legal_entity_name || ''}</div>
+          </td>
+          <td class="py-3 px-4 mono text-slate-300">${f.city || ''}</td>
+          <td class="py-3 px-4 mono font-bold ${f.licensed_capacity <= 6 ? 'text-amber-400' : 'text-emerald-400'}">${f.licensed_capacity || 0} beds</td>
+          <td class="py-3 px-4">${imsBadge}</td>
+          <td class="py-3 px-4 text-slate-400">${f.address_line || ''}</td>
+          <td class="py-3 px-4 mono text-emerald-400">${f.license_status || 'Active'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterFacilities() { renderFacilities(); }
+
+    function renderExclusions() {
+      if (!globalData || !globalData.exclusions) return;
+      const tbody = document.getElementById('exclusions-table-body');
+      tbody.innerHTML = '';
+
+      const search = (document.getElementById('exclusion-search').value || '').toLowerCase();
+      const cityFilter = document.getElementById('exclusion-city-filter').value;
+      const typeFilter = document.getElementById('exclusion-type-filter').value;
+
+      const filtered = globalData.exclusions.filter(e => {
+        const matchesSearch = !search ||
+          (e.individual_name && e.individual_name.toLowerCase().includes(search)) ||
+          (e.bus_name && e.bus_name.toLowerCase().includes(search)) ||
+          (e.address && e.address.toLowerCase().includes(search));
+
+        const matchesCity = (cityFilter === 'ALL') || (e.city && e.city.toUpperCase() === cityFilter);
+        const matchesType = (typeFilter === 'ALL') || (e.exclusion_type && e.exclusion_type.toLowerCase() === typeFilter.toLowerCase());
+
+        return matchesSearch && matchesCity && matchesType;
+      });
+
+      document.getElementById('exclusion-count').innerText = filtered.length;
+
+      filtered.slice(0, 100).forEach(e => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-800/40 transition';
+
+        const isDP = e.city && e.city.toUpperCase() === 'DANA POINT';
+        const dpBadge = isDP ? '<span class="ml-1 px-1.5 py-0.5 rounded text-[10px] bg-purple-950 text-purple-300 border border-purple-800/60 font-mono">Dana Point</span>' : '';
+
+        const name = e.bus_name ? `<strong class="text-rose-300">${e.bus_name}</strong>` : (e.individual_name || 'UNKNOWN');
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-medium text-white">${name}${dpBadge}</td>
+          <td class="py-3 px-4 mono text-slate-300">${e.city || ''}</td>
+          <td class="py-3 px-4 text-slate-300"><span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-slate-200">${e.specialty || e.general_specialty || 'General'}</span></td>
+          <td class="py-3 px-4 text-xs font-mono text-rose-400">${e.exclusion_category || e.exclusion_type}</td>
+          <td class="py-3 px-4 text-slate-400">${e.address || ''}</td>
+          <td class="py-3 px-4 mono text-slate-400">${e.exclusion_date || ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterExclusions() { renderExclusions(); }
+
+    function initCharts() {
+      if (!globalData || !globalData.revolving_door) return;
+      const rd = globalData.revolving_door;
+
+      // Chart 1: Outcomes Donut
+      const ctx1 = document.getElementById('chart-outcomes').getContext('2d');
+      chartOutcomesInstance = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+          labels: ['Completed Treatment', 'Dropped Out / AMA', 'Transferred to Facility', 'Other Outcome'],
+          datasets: [{
+            data: [rd.completion_rate_pct, rd.dropout_ama_rate_pct, rd.transferred_rate_pct, rd.other_outcome_pct],
+            backgroundColor: ['#10b981', '#ef4444', '#3b82f6', '#64748b'],
+            borderWidth: 0,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 } } }
+          },
+          cutout: '70%'
+        }
+      });
+
+      // Chart 2: Settings Bar
+      const ctx2 = document.getElementById('chart-settings').getContext('2d');
+      const settingsLabels = rd.service_settings.map(s => s.setting);
+      const losData = rd.service_settings.map(s => s.avg_los);
+      const dropoutData = rd.service_settings.map(s => s.dropout_pct);
+
+      chartSettingsInstance = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: settingsLabels,
+          datasets: [
+            {
+              label: 'Avg Length of Stay (Days)',
+              data: losData,
+              backgroundColor: '#10b981',
+              borderRadius: 4,
+              yAxisID: 'y',
+            },
+            {
+              label: 'Dropout Rate (%)',
+              data: dropoutData,
+              backgroundColor: '#ef4444',
+              borderRadius: 4,
+              yAxisID: 'y1',
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } },
+            y: { position: 'left', ticks: { color: '#10b981' }, grid: { color: '#1e293b' } },
+            y1: { position: 'right', ticks: { color: '#ef4444' }, grid: { display: false } }
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { color: '#94a3b8', boxWidth: 12, font: { size: 11 } } }
+          }
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
