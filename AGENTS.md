@@ -16,3 +16,4 @@ To ensure seamless execution without triggering repetitive manual approval promp
 3. **Subagent Execution Discipline**:
    - Subagents must not issue ad-hoc network exploration commands.
    - All network requests should be executed via Python standard library (`urllib.request`) inside consolidated scripts.
+
