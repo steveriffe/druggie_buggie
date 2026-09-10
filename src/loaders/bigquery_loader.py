@@ -55,3 +55,4 @@ class BigQueryLakehouse:
         logger.info("Executing BigQuery job...")
         query_job = self.client.query(sql_query)
         return query_job.result()
+

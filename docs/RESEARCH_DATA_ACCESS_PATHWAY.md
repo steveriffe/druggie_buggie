@@ -35,3 +35,4 @@ State data release committees evaluate data requests based on **public interest,
    - What is the longitudinal mortality rate among individuals experiencing 3+ treatment episodes within a 24-month window?
 3. **Institutional Review & DUA Readiness**:
    - Prepare secure cloud computing architecture (e.g. BigQuery VPC Service Controls / Customer-Managed Encryption Keys) satisfying all state-mandated security benchmarks.
+

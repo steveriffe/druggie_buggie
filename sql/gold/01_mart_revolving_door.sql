@@ -36,3 +36,4 @@ SELECT
 FROM `db1b-1.rehab_bronze.raw_samhsa_teds_discharges`
 WHERE stfips IN (6, 41)
 GROUP BY 1, 2, 3, 4;
+

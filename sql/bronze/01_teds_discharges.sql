@@ -25,3 +25,4 @@ CREATE TABLE IF NOT EXISTS `db1b-1.rehab_bronze.raw_samhsa_teds_discharges` (
 )
 PARTITION BY RANGE_BUCKET(discharge_year, GENERATE_ARRAY(2015, 2030, 1))
 CLUSTER BY stfips, reason, numprg;
+

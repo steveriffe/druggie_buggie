@@ -79,3 +79,4 @@ class RevolvingDoorAnalyzer:
             "total_dropouts_ama": int(dropouts),
             "dropout_rate_pct": round((dropouts / total) * 100, 2),
         }
+

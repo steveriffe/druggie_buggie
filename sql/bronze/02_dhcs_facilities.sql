@@ -22,3 +22,4 @@ CREATE TABLE IF NOT EXISTS `db1b-1.rehab_bronze.raw_dhcs_facilities` (
     ingested_at TIMESTAMP OPTIONS(description="Record ingestion timestamp")
 )
 CLUSTER BY county, city, license_status;
+

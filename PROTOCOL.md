@@ -47,3 +47,4 @@ To connect patient outcomes, billing data, facility inspections, and corporate o
 3. **State License / Certification Number**: CA DHCS license number, OR OHA license number.
 4. **Standardized Physical Address / Parcel Number**: Linking unlicensed recovery residences to licensed outpatient clinics.
 5. **EIN (Employer Identification Number)**: Linking state business entities to IRS Form 990 non-profit returns.
+

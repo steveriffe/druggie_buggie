@@ -75,3 +75,4 @@ class SAMHSATEDSExtractor:
 
         logger.info(f"Filtered {len(bronze_rows)} records for states {self.target_fips}.")
         return bronze_rows
+

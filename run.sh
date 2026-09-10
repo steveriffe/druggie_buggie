@@ -31,3 +31,4 @@ python3 -c "import src; print('✅ Package import verified')"
 echo "=================================================="
 echo "🎉 Druggie_buggie initialized successfully."
 echo "=================================================="
+

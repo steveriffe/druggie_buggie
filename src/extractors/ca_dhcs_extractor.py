@@ -106,3 +106,4 @@ if __name__ == "__main__":
     extractor = CADHCSExtractor()
     records = extractor.fetch_records(limit=100)
     print(f"Sample transformed records: {len(records)}")
+

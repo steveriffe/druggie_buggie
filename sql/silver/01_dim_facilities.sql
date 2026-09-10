@@ -27,3 +27,4 @@ SELECT
     END AS is_oc_rehab_riviera,
     ingested_at
 FROM `db1b-1.rehab_bronze.raw_dhcs_facilities`;
+
