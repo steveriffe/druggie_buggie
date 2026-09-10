@@ -1,0 +1,67 @@
+# ==============================================================================
+# Druggie_buggie - Git Ignore Protocol
+# Modeled after Portfolio conventions with Big Data / Forensic Data protections
+# ==============================================================================
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Dependencies & Python Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+node_modules/
+package-lock.json
+
+# Environment Variables & Secret Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.key
+*.db
+credentials.db
+service-account*.json
+token.json
+
+# Bulk Data Storage (Do NOT commit bulk datasets or raw archives to git)
+data/
+*.csv
+*.tsv
+*.parquet
+*.jsonl
+*.zip
+*.tar.gz
+*.tar
+*.xlsx
+*.parquet.gzip
+*.sas7bdat
+*.dta
+
+# BigQuery, Staging & Scratch
+scratch/
+tmp/
+temp/
+.bq/
+*.log
+logs/
+
+# IDE & Editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+.ipynb_checkpoints/
