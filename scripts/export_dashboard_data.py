@@ -234,6 +234,14 @@ def export_dashboard_data():
                 "completion_bonus": "$3,000 – $10,000 case reconciliation",
                 "driver": "Insurance milking to the exact authorized limit, followed by graduation bonus capture."
             }
+        },
+        "interstate_pipeline": {
+            "primary_origin": "Oklahoma (and Midwestern/Sunbelt states)",
+            "primary_payer": "Blue Cross Blue Shield (BCBS) PPO via BlueCard Out-of-Network",
+            "inbound_inducement": "Facility-paid one-way flight to Orange County (violates HSC § 11831.6)",
+            "hostage_ticket_rule": "Paid return transport home (1,400+ miles away) is strictly conditioned on completing the facility's designated graduation date (Day 30).",
+            "early_exit_penalty": "Leaving prior to graduation / leaving AMA revokes paid travel home, geographically stranding the patient in coastal California without resources.",
+            "coercive_leverage": "Patients are effectively forced to stay to avoid being left homeless 1,400 miles from home, guaranteeing the facility can extract the full 30 days of insurance benefits."
         }
     }
 
