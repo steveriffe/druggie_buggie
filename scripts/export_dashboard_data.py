@@ -114,12 +114,72 @@ def export_dashboard_data():
         ]
     }
 
+    # 4. Ocean Hills Deep-Dive Case Study
+    ocean_hills_case_study = {
+        "facility_name": "Ocean Hills Recovery, LLC",
+        "license_number": "300208KP",
+        "license_expiration": "2028-07-31",
+        "total_licensed_beds": 30,
+        "incidental_medical_services": True,
+        "central_hub": {
+            "name": "Central Clinical & Administrative Hub",
+            "address": "33701 Big Sur St., Dana Point, CA 92629",
+            "role": "Group Therapy, Day Treatment (IOP/PHP), Intake, Urine Toxicology Collection, Executive Offices",
+            "lat": 33.473206,
+            "lng": -117.689012
+        },
+        "satellite_houses": [
+            {
+                "name": "Satellite House 1",
+                "address": "33402 Palo Alto St., Dana Point, CA 92629",
+                "estimated_beds": 6,
+                "zoning": "Single-Family Residential (HSC § 11834.01)",
+                "distance_to_hub": "0.6 miles"
+            },
+            {
+                "name": "Satellite House 2",
+                "address": "34062 Street of the Amber Lantern, Dana Point, CA 92629",
+                "estimated_beds": 6,
+                "zoning": "Lantern District Residential",
+                "distance_to_hub": "0.9 miles"
+            },
+            {
+                "name": "Satellite House 3",
+                "address": "33242 Christina Dr., Dana Point, CA 92629",
+                "estimated_beds": 6,
+                "zoning": "Suburban Single-Family Residential",
+                "distance_to_hub": "1.2 miles"
+            },
+            {
+                "name": "Satellite House 4",
+                "address": "34469 Camino El Molino, Capistrano Beach / Dana Point, CA 92677",
+                "estimated_beds": 6,
+                "zoning": "Capistrano Beach Residential",
+                "distance_to_hub": "1.8 miles"
+            }
+        ],
+        "leadership": [
+            {"name": "Robert Leigh", "role": "Chief Executive Officer (CEO)"},
+            {"name": "Christian Small, M.D.", "role": "Medical Director & Addiction Psychiatrist", "npi": "1740546209", "affiliation": "Headlands Addiction Treatment Services"},
+            {"name": "George H. Tucker, Ph.D., ABPP", "role": "Clinical Director", "experience": "40 years inpatient/outpatient"},
+            {"name": "Jerney Allen", "role": "Director of Admissions"},
+            {"name": "Ricky Herrera", "role": "Director of Business Development"}
+        ],
+        "daily_circuit": [
+            {"step": "1. Morning Muster", "desc": "House managers dispense morning meds and conduct headcounts at each satellite house."},
+            {"step": "2. Shuttle Transport", "desc": "White passenger vans shuttle 30 patients from the 4 suburban homes to 33701 Big Sur St."},
+            {"step": "3. Central Clinical Day", "desc": "90-minute group therapy blocks (Rev Codes 0905/0906), psychiatric consults, and 2-3x weekly Urine Drug Screens (UDS CPT 80307 / G0483)."},
+            {"step": "4. Evening Return", "desc": "Vans transport patients back to suburban residential neighborhoods to sleep."}
+        ]
+    }
+
     # Consolidated export
     bundle = {
         "generated_at": "2026-09-10T07:48:00Z",
         "facilities": facilities,
         "exclusions": exclusions,
         "revolving_door": revolving_door,
+        "ocean_hills_case_study": ocean_hills_case_study,
         "summary": {
             "total_ca_facilities": 2266,
             "total_ca_beds": 21342,

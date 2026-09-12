@@ -115,6 +115,9 @@
       <button onclick="switchTab('revolving-door')" id="tab-revolving-door" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2">
         <span>🔄</span> The Revolving Door (SAMHSA TEDS-D Attrition)
       </button>
+      <button onclick="switchTab('ocean-hills')" id="tab-ocean-hills" class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2">
+        <span>🕵️‍♂️</span> Case Study: Ocean Hills & The 6-Bed Archipelago
+      </button>
     </div>
 
     <!-- TAB 1: Facilities -->
@@ -271,6 +274,157 @@
         </div>
       </div>
     </div>
+
+    <!-- TAB 4: Case Study: Ocean Hills & The 6-Bed Archipelago -->
+    <div id="view-ocean-hills" class="hidden space-y-6">
+      <!-- Case Study Header Banner -->
+      <div class="bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-emerald-800/40 rounded-2xl p-6 relative overflow-hidden">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/60 text-xs font-mono mb-3">
+            <span>🔬</span> Investigative Case Study &bull; Dana Point, CA
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">The Anatomy of Ocean Hills Recovery</h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            On official California state records, <strong class="text-white">Ocean Hills Recovery, LLC</strong> is registered as a <span class="mono text-emerald-400 font-bold">30-bed</span> residential addiction facility. In physical reality, there is no 30-bed facility. The operation is structured as a <strong class="text-emerald-400">"Hub-and-Spoke Archipelago"</strong>: a centralized clinical office linked to four suburban 6-bed single-family houses scattered across Dana Point residential neighborhoods.
+          </p>
+        </div>
+      </div>
+
+      <!-- The Physical Archipelago: Hub vs Satellites Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Central Hub Card (Col 1) -->
+        <div class="bg-slate-900/80 border-2 border-emerald-500/50 rounded-xl p-5 relative shadow-lg shadow-emerald-950/20">
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              CENTRAL CLINICAL HUB
+            </span>
+            <span class="text-xs text-slate-400 mono">License: 300208KP</span>
+          </div>
+          <h3 class="text-lg font-bold text-white">33701 Big Sur St.</h3>
+          <p class="text-xs text-slate-400 mt-1">Dana Point, CA 92629</p>
+
+          <div class="mt-4 pt-4 border-t border-slate-800 text-xs space-y-2 text-slate-300">
+            <div><strong class="text-slate-200">Facility Type:</strong> Licensed & Certified (IMS Detox)</div>
+            <div><strong class="text-slate-200">Role:</strong> Group therapy rooms, psychiatric consults, urine toxicology collection, intake, and executive offices.</div>
+            <div><strong class="text-slate-200">Revenue Extraction:</strong> IOP Day Bundles (Rev 0905/0906), Medical Detox (Rev 0160), Definitive UDS (CPT 80307).</div>
+          </div>
+        </div>
+
+        <!-- The 4 Satellites (Col 2 & 3) -->
+        <div class="lg:col-span-2 bg-slate-900/40 border border-slate-800 rounded-xl p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-sm font-semibold text-white flex items-center gap-2">
+              <span>🏡</span> The 4 Satellite Houses (Single-Family Residential Zoning)
+            </h4>
+            <span class="text-xs text-amber-400 font-mono">HSC § 11834.01 Loophole</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="satellite-houses-container">
+            <!-- Populated via JS / Data -->
+            <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/60">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">33402 Palo Alto St.</span>
+                <span class="mono text-amber-400 text-[11px]">6 Beds</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Dana Point, CA &bull; ~0.6 mi from Hub</div>
+              <div class="text-[10px] text-slate-400 mt-2">Single-family suburban house housing adult detox/rehab patients.</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/60">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">34062 Street of the Amber Lantern</span>
+                <span class="mono text-amber-400 text-[11px]">6 Beds</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Lantern District, Dana Point &bull; ~0.9 mi from Hub</div>
+              <div class="text-[10px] text-slate-400 mt-2">Historic Lantern District residential home.</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/60">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">33242 Christina Dr.</span>
+                <span class="mono text-amber-400 text-[11px]">6 Beds</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Dana Point, CA &bull; ~1.2 mi from Hub</div>
+              <div class="text-[10px] text-slate-400 mt-2">Residential suburban neighborhood cul-de-sac.</div>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/60">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">34469 Camino El Molino</span>
+                <span class="mono text-amber-400 text-[11px]">6 Beds</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Capistrano Beach / Dana Point &bull; ~1.8 mi from Hub</div>
+              <div class="text-[10px] text-slate-400 mt-2">Coastal residential property.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Daily Patient Shuttle Circuit -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <h4 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+          <span>🚐</span> The Daily Circuit: How Patients & Capital Move
+        </h4>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+            <div class="mono text-emerald-400 font-bold mb-1">08:00 AM</div>
+            <strong class="text-white">1. Satellite Muster</strong>
+            <p class="text-slate-400 mt-1">House managers dispense morning meds and conduct headcounts at each 6-bed suburban house.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+            <div class="mono text-emerald-400 font-bold mb-1">08:30 AM</div>
+            <strong class="text-white">2. Shuttle Vans</strong>
+            <p class="text-slate-400 mt-1">White transport passenger vans shuttle 30 patients through Dana Point streets to 33701 Big Sur St.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+            <div class="mono text-emerald-400 font-bold mb-1">09:00 AM - 04:00 PM</div>
+            <strong class="text-white">3. Billing Mill</strong>
+            <p class="text-slate-400 mt-1">Central group therapy blocks (IOP 0905/0906), psychiatric check-ins, and high-frequency UDS tox testing.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50">
+            <div class="mono text-emerald-400 font-bold mb-1">05:00 PM</div>
+            <strong class="text-white">4. Evening Return</strong>
+            <p class="text-slate-400 mt-1">Vans return patients back to residential neighborhoods to sleep; central commercial facility closes for the night.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leadership & Corporate Roster -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
+        <h4 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+          <span>👔</span> Leadership & Corporate Entities Behind Ocean Hills Recovery
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+            <div class="font-bold text-white text-sm">Robert Leigh</div>
+            <div class="text-emerald-400 text-[11px] font-mono">Chief Executive Officer (CEO)</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">Oversees executive strategy, facility expansion, and commercial operations.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+            <div class="font-bold text-white text-sm">Christian Small, M.D.</div>
+            <div class="text-emerald-400 text-[11px] font-mono">Medical Director & Psychiatrist</div>
+            <div class="text-[11px] text-purple-300 font-mono mt-0.5">NPI: 1740546209</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">Addiction Psychiatrist; Founder of Headlands Addiction Treatment Services.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+            <div class="font-bold text-white text-sm">George H. Tucker, Ph.D.</div>
+            <div class="text-emerald-400 text-[11px] font-mono">Clinical Director, Psychologist</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">Supervises group therapy curriculum, utilization reviews, and clinical staff.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+            <div class="font-bold text-white text-sm">Jerney Allen</div>
+            <div class="text-emerald-400 text-[11px] font-mono">Director of Admissions</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">Manages intake inquiries, insurance verification, and patient bed assignment.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50">
+            <div class="font-bold text-white text-sm">Ricky Herrera</div>
+            <div class="text-emerald-400 text-[11px] font-mono">Director of Business Development</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">Drives patient acquisition pipelines, digital marketing, and referral partnerships.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-800/40 border border-slate-700/50 border-l-2 border-l-amber-500">
+            <div class="font-bold text-amber-300 text-sm">Ocean Hills Recovery, LLC</div>
+            <div class="text-slate-300 text-[11px] font-mono">Operating Corporate Entity</div>
+            <p class="text-slate-400 text-[11px] mt-1.5">California LLC holding State DHCS License 300208KP and IMS certification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -299,10 +453,12 @@
       document.getElementById('view-facilities').classList.add('hidden');
       document.getElementById('view-exclusions').classList.add('hidden');
       document.getElementById('view-revolving-door').classList.add('hidden');
+      document.getElementById('view-ocean-hills').classList.add('hidden');
 
       document.getElementById('tab-facilities').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
       document.getElementById('tab-exclusions').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
       document.getElementById('tab-revolving-door').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
+      document.getElementById('tab-ocean-hills').className = 'pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm flex items-center gap-2';
 
       document.getElementById('view-' + tabId).classList.remove('hidden');
       document.getElementById('tab-' + tabId).className = 'pb-3 border-b-2 border-emerald-500 text-emerald-400 font-semibold text-sm flex items-center gap-2';
@@ -480,3 +636,4 @@
   </script>
 </body>
 </html>
+
