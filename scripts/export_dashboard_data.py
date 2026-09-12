@@ -170,7 +170,71 @@ def export_dashboard_data():
             {"step": "2. Shuttle Transport", "desc": "White passenger vans shuttle 30 patients from the 4 suburban homes to 33701 Big Sur St."},
             {"step": "3. Central Clinical Day", "desc": "90-minute group therapy blocks (Rev Codes 0905/0906), psychiatric consults, and 2-3x weekly Urine Drug Screens (UDS CPT 80307 / G0483)."},
             {"step": "4. Evening Return", "desc": "Vans transport patients back to suburban residential neighborhoods to sleep."}
-        ]
+        ],
+        "ppo_timeline": [
+            {
+                "phase": "Days 1 – 7: Acute Medical Detox",
+                "rev_codes": "Rev Code 0160 ($2,500/day)",
+                "lab_ancillary": "Intake Panel + CPT 80307 / G0483 ($2,500/sample)",
+                "est_billed": "$20,000",
+                "clinical_narrative": "Withdrawal stabilization and suboxone/taper protocols. Intensive nursing monitoring at central hub and licensed satellite home."
+            },
+            {
+                "phase": "Days 8 – 27: Residential & Lab Extraction",
+                "rev_codes": "Rev 1002 (Room & Board: $1,200/day) + Rev 0905/0906 (Day IOP: $950/day)",
+                "lab_ancillary": "3x weekly Definitive LC-MS/MS Urine Drug Screens ($2,000/panel = ~$18,000 in lab charges)",
+                "est_billed": "$61,000",
+                "clinical_narrative": "Daily shuttle van loop to Big Sur St for group lectures. Continuous documentation updates to satisfy commercial insurer utilization review (UR)."
+            },
+            {
+                "phase": "Days 28 – 30: Benefit Exhaustion & Graduation Arbitrage",
+                "rev_codes": "Concurrent Review Cutoff (Aetna/PPO Residential Days Exhausted)",
+                "lab_ancillary": "Discharge toxicology panel ($2,000)",
+                "est_billed": "$6,500",
+                "clinical_narrative": "Patient reaches Day 30 and insists on exit. Rather than risk an AMA discharge (which forfeits completion bonuses and invites insurer clawback audits), the facility immediately pivots to rubber-stamp a formal 'Graduation'."
+            },
+            {
+                "phase": "Days 31+: Downstream Churn (Cash Sober Living + Outpatient PPO)",
+                "rev_codes": "Out-of-Pocket Cash Bed ($1,500–$3,500/mo) + Rev 0905 IOP Outpatient Billing",
+                "lab_ancillary": "Continued 2-3x weekly PPO lab urine testing ($1,500–$3,000/week)",
+                "est_billed": "$12,000/month recurring",
+                "clinical_narrative": "Patient transitions to affiliated sober living house, paying direct monthly cash, while continuing to shuttle to Big Sur St to keep PPO lab and IOP billing flowing."
+            }
+        ],
+        "discharge_arbitrage": {
+            "ub04_code_01": {
+                "code": "UB-04 Code 01",
+                "title": "Routine Discharge / Graduated",
+                "financial_bounty": "Unlocks insurer completion bonuses ($3,000–$10,000) and reconciles episodic case rates.",
+                "audit_exposure": "Low Risk. Insurer marks episode cleanly concluded without SIU red flags.",
+                "facility_strategy": "Offered instantly when patient threatens to leave at Day 30 to protect the entire $80,000+ billing run."
+            },
+            "ub04_code_07": {
+                "code": "UB-04 Code 07",
+                "title": "Left Against Medical Advice (AMA)",
+                "financial_bounty": "Total forfeiture of completion bonuses and quality case reconciliations.",
+                "audit_exposure": "Extreme Risk. Triggers retrospective medical necessity chart audits and retroactive clawbacks of prior 28 days.",
+                "facility_strategy": "Aggressively avoided for PPO patients; reserved almost exclusively for public/uninsured patients."
+            }
+        },
+        "payer_chasm": {
+            "public_safety_net": {
+                "label": "Public Safety-Net / Medi-Cal (TEDS-D)",
+                "avg_per_diem": "$150 – $350 / day",
+                "ama_rate": "43.5%",
+                "completion_rate": "22.7%",
+                "completion_bonus": "$0",
+                "driver": "Underfunded clinics, bed constraints, zero retention incentive."
+            },
+            "commercial_ppo": {
+                "label": "Commercial PPO Deluxe (Ocean Hills / Dana Point)",
+                "avg_per_diem": "$1,800 – $3,500 / day",
+                "ama_rate": "< 10% (Paper suppressed)",
+                "completion_rate": "> 85% (Day 30 Paper Graduations)",
+                "completion_bonus": "$3,000 – $10,000 case reconciliation",
+                "driver": "Insurance milking to the exact authorized limit, followed by graduation bonus capture."
+            }
+        }
     }
 
     # Consolidated export

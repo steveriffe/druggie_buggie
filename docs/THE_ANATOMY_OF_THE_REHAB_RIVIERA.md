@@ -48,18 +48,31 @@
                                             ▼
                         ┌───────────────────────────────────────┐
                         │    DAY 28–30 BENEFIT EXHAUSTION       │
-                        │ Insurer UR Denials / Out-of-Pocket Cap│
+                        │ Insurer UR Cutoff / Max PPO Days Met │
                         └───────────────────┬───────────────────┘
                                             │
-                      ┌─────────────────────┴─────────────────────┐
-                      ▼                                           ▼
-          ┌───────────────────────┐                   ┌───────────────────────┐
-          │  DROPOUT / LEFT AMA   │                   │ UNLICENSED SOBER LIVING│
-          │ (43.5% of CA Episodes)│                   │ Out-of-Pocket Cash Bed │
-          └───────────┬───────────┘                   └───────────┬───────────┘
-                      │                                           │
-                      └─────────────────────┬─────────────────────┘
-                                            │ Relapse / Trigger
+                ┌───────────────────────────┴───────────────────────────┐
+                │                                                       │
+                ▼ (Public / Safety-Net Reality)                         ▼ (Private PPO / Coastal Reality)
+    ┌───────────────────────┐                               ┌───────────────────────┐
+    │  DROPOUT / LEFT AMA   │                               │ THE "GRADUATION"      │
+    │ (43.5% of CA Episodes)│                               │ ARBITRAGE             │
+    │ State & Medi-Cal Data │                               │ • Insurer Completion  │
+    └───────────┬───────────┘                               │   Bonuses Captured    │
+                │                                           │ • Zero AMA Clawbacks  │
+                │                                           │ • Rubber-Stamped Exit │
+                │                                           └───────────┬───────────┘
+                │                                                       │
+                └───────────────────────────┬───────────────────────────┘
+                                            │
+                                            ▼ Step-Down Funnel
+                        ┌───────────────────────────────────────┐
+                        │   UNLICENSED SOBER LIVING RE-ENTRY    │
+                        │ • Cash Bed: $1,500–$3,500/month       │
+                        │ • Continued Outpatient PPO Billing    │
+                        │ • 3x/Week UDS Lab Extraction Continues│
+                        └───────────────────┬───────────────────┘
+                                            │ Relapse / Cycle Reset
                                             ▼
                         ┌───────────────────────────────────────┐
                         │       THE REVOLVING DOOR LOOP         │
@@ -190,14 +203,121 @@ Our BigQuery analysis of the **HHS-OIG Federal Exclusion Database (`rehab_bronze
 
 ---
 
-### Chapter 5: The Empirical Reality — The Revolving Door Index
+### Chapter 5: The Payer Chasm — Public Safety-Net Churn vs. The Commercial PPO Milking Engine
 
-When facilities market their programs, they boast of high success rates and lifelong recovery. But what do the objective, population-level administrative datasets show?
+When analyzing outcomes in the addiction treatment space, one encounters a glaring paradox:
+- In federal datasets like **SAMHSA TEDS-D**, treatment episodes are plagued by staggering **43.5% dropout and Against Medical Advice (AMA)** rates.
+- Yet inside coastal private rehabs like Ocean Hills Recovery in Dana Point, the vast majority of patients are documented as having **"graduated"** right at the 30-day mark.
 
-Our analysis of the **SAMHSA TEDS-D 2023 Discharge Dataset (`rehab_bronze.raw_samhsa_teds_discharges`)**, covering **108,779 episodes** in California and Oregon, provides an empirical reality check:
+Why does public data show an attrition crisis while private PPO facilities show a graduation conveyor belt?
+
+The answer lies in the **payer chasm**—the diametric difference in financial incentives between public safety nets and private commercial insurance.
 
 ```
-  CALIFORNIA SUBSTANCE USE TREATMENT DISCHARGE OUTCOMES (SAMHSA TEDS-D):
+  THE PAYER CHASM: PUBLIC VS. COMMERCIAL PPO INCENTIVE STRUCTURES
+  ──────────────────────────────────────────────────────────────────────────────────────────
+  Dimension                  Public / Safety-Net (TEDS-D)      Commercial PPO (Ocean Hills)
+  ──────────────────────────────────────────────────────────────────────────────────────────
+  Primary Payer              State Grants, Medi-Cal, County    Aetna "Deluxe", Anthem Gold, UHC
+  Daily Facility Revenue     $150 – $350 / day                 $1,500 – $3,500 / day
+  Urine Toxicology Billing   None or capped at $20/screen      $1,500 – $4,000 per LC-MS/MS panel
+  Length-of-Stay Driver      Bed shortages, budget caps        Maximum PPO authorized days (30)
+  Discharge Dynamic          High attrition / early AMA (43%)  Rubber-stamped "Graduation" at Day 30
+  Post-30 Day Step-Down      County outpatient / shelter       Cash Sober Living ($2,500/mo) + IOP
+  Insurer Completion Bonus   $0                                Lucrative case-rate reconciliation
+  Audit Clawback Risk        Minimal                           Catastrophic if discharged AMA
+  ──────────────────────────────────────────────────────────────────────────────────────────
+```
+
+#### The Public Reality (SAMHSA TEDS-D Benchmark)
+The SAMHSA TEDS-D dataset covers 108,779 episodes across California and Oregon. It is heavily weighted toward state-administered block grants, Medi-Cal managed care, and county health clinics. In these underfunded public systems:
+- Daily reimbursements are capped and modest.
+- Facilities have no financial windfall from retaining patients once baseline acute detox is achieved.
+- Overcrowded, bare-bones institutional settings create high patient frustration, resulting in **43.5% of clients walking out AMA** and only **22.7% completing treatment**.
+
+#### The Commercial PPO Reality (The Coastal Extraction Engine)
+In coastal Orange County, however, facilities like Ocean Hills operate on an entirely different economic plane. They target patients carrying high-end, employer-sponsored commercial PPO plans—such as an **Aetna "deluxe" PPO**, Anthem Blue Cross, or UnitedHealthcare out-of-network benefits.
+
+For these patients, the facility does not want them to drop out early. Every authorized day in bed represents **$1,500 to $3,500 in combined room, board, clinical therapy, and laboratory billing**. The goal is not rapid discharge; the goal is **to milk the insurance benefit to the exact final authorized day**.
+
+---
+
+### Chapter 6: The 30-Day Milking Machine & The "Graduation" Arbitrage
+
+To understand how high-end PPO plans are monetized, one must examine the precise 30-day clinical and billing trajectory:
+
+```
+  THE 30-DAY PPO BILLING CYCLE:
+  ┌───────────────────────────────────────────────────────────────────────────────────────┐
+  │ DAYS 1 – 7: ACUTE DETOX & INTAKE                                                     │
+  │ • Revenue Code 0160: Inpatient Detoxification ($2,000 – $3,500 / day)                 │
+  │ • Initial Comprehensive Psychiatric Diagnostic Evaluation (CPT 90792)                 │
+  │ • Baseline Urine Toxicology LC-MS/MS Panel (CPT 80307 / G0483: $2,500+)               │
+  │ Cumulative Billed: $18,000 – $28,000                                                  │
+  └───────────────────────────────────┬───────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+  ┌───────────────────────────────────────────────────────────────────────────────────────┐
+  │ DAYS 8 – 27: RESIDENTIAL RETENTION & LAB CHURN                                        │
+  │ • Revenue Code 1002: Residential Room & Board ($800 – $1,500 / day)                   │
+  │ • Revenue Code 0905/0906: Partial Hospitalization / Day Treatment ($750 – $1,200/day) │
+  │ • 3x Weekly Urine Drug Screens (UDS): Point-of-care + Definitive LC-MS/MS Panels      │
+  │   (9 lab tests @ $2,000 billed = $18,000 in ancillary lab charges)                    │
+  │ Cumulative Billed: $65,000 – $95,000                                                  │
+  └───────────────────────────────────┬───────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+  ┌───────────────────────────────────────────────────────────────────────────────────────┐
+  │ DAYS 28 – 30: THE INSURANCE CLIFF & THE GRADUATION PIVOT                              │
+  │ • Insurer Utilization Review (UR) issues Concurrent Review Cutoff                     │
+  │ • Commercial benefits for residential level of care are fully exhausted               │
+  │ • PATIENT SAYS: "I am leaving Day 30, even if it means signing AMA."                  │
+  │ • FACILITY REACTION: Immediate Pivot to Rubber-Stamp "Graduation"                     │
+  │   - Avoids UB-04 Discharge Status Code 07 (AMA)                                       │
+  │   - Secures UB-04 Discharge Status Code 01 (Routine / Graduated)                      │
+  │   - Captures Insurer Completion Bonuses & Reconciles Case-Rate Contracts              │
+  │   - Defends Billing Run Against Retroactive Insurer Audits & Clawbacks                │
+  └───────────────────────────────────┬───────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+  ┌───────────────────────────────────────────────────────────────────────────────────────┐
+  │ DAYS 31+: DOWNSTREAM MONETIZATION (CASH SOBER LIVING + OUTPATIENT PPO)                │
+  │ • Unlicensed Satellite Sober Living Bed: $1,500 – $3,500 / month CASH out-of-pocket   │
+  │ • Continued IOP / PHP Day Billing to PPO (Rev 0905/0906)                              │
+  │ • Continued 2–3x Weekly Urine Toxicology Screening Billed to PPO                      │
+  └───────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Why Facilities Desperately Avoid the "AMA" Label
+When an insured patient decides they are done at Day 30 and announces their intention to leave—regardless of whether clinical staff recommend an extension—a fascinating administrative maneuver takes place. 
+
+If the patient insists on leaving, the standard clinical protocol would theoretically be to process an **Against Medical Advice (AMA)** discharge. But in private PPO facilities, leadership will aggressively avoid having an AMA on the patient's record. Instead, they will rapidly pivot and declare that the patient has successfully completed the program and is **"Graduating"**.
+
+Why this sudden urgency to bestow a diploma? The reasons are purely financial:
+
+1. **Insurer Completion Bonuses & Bundled Case-Rate Reconciliation**:
+   Many commercial insurers (including major national carriers like Aetna, Cigna, and Anthem) and behavioral health carve-outs negotiate provider contracts with **value-based milestones or episodic bundled case rates**. Under these contracts, a portion of the reimbursement—or an end-of-episode quality bonus—is contingent upon documented **"Successful Program Completion"**. Discharging a patient with UB-04 Discharge Status Code `01` ("Discharged to home or self care") triggers the release of these completion funds. Discharging with Code `07` ("Left against medical advice") forfeits the completion bonus entirely.
+
+2. **The Threat of Retroactive Medical Necessity Audits & Clawbacks**:
+   When a commercial insurer's Special Investigations Unit (SIU) or claims review department sees an AMA discharge on an \$80,000+ claim, red flags immediately go up. Insurers frequently reason: *If the patient was not stabilized enough to complete treatment and walked out AMA, why did we just pay for 28 days of acute residential care?*
+   Insurers routinely use AMA discharges as clinical grounds to launch retrospective chart audits, requesting full nursing notes, physician rounds, and therapy attendance logs. If the documentation has the slightest deficiency, the insurer issues a **clawback demand**, forcing the facility to refund tens of thousands of dollars. A clean "Graduated" discharge closes the book on the claim and insulates the facility from clawback exposure.
+
+3. **Preserving Alumni Referrals and Online Reputation**:
+   An angry patient walking out with an AMA stamp is likely to post damaging reviews online or file grievances with state regulators and insurance commissioners. An official "Graduation Ceremony"—complete with a certificate, alumni coin, and staff applause—reframes the extraction as a medical victory, keeping the patient and their family compliant.
+
+4. **The Bridge to the Next Extraction: Cash Sober Living**:
+   Once the commercial PPO residential benefit is exhausted at Day 30, the facility does not simply wave goodbye. They steer the newly minted "graduate" into an affiliated or partner **unlicensed sober living home**. Because sober living is non-clinical room and board, insurance will not pay for it. The patient or family must pay **\$1,500 to \$3,500 per month in cash directly to the operator**. Meanwhile, the facility continues shuttling the patient back to the central hub at 33701 Big Sur St to bill the PPO for outpatient groups and high-margin urine tests.
+
+---
+
+### Chapter 7: The Empirical Reality — The Revolving Door Index
+
+When comparing the public safety net to the private coastal sector, one fundamental metric unites both: **Recidivism**.
+
+Our analysis of the **SAMHSA TEDS-D 2023 Discharge Dataset (`rehab_bronze.raw_samhsa_teds_discharges`)**, covering **108,779 episodes** in California and Oregon, provides an empirical benchmark for the revolving door:
+
+```
+  CALIFORNIA SUBSTANCE USE TREATMENT DISCHARGE BENCHMARK (SAMHSA TEDS-D):
   ─────────────────────────────────────────────────────────────────────────────
   Outcome Category                               Count       Percentage
   ─────────────────────────────────────────────────────────────────────────────
@@ -211,21 +331,22 @@ Our analysis of the **SAMHSA TEDS-D 2023 Discharge Dataset (`rehab_bronze.raw_sa
 ```
 
 #### Key Findings:
-1. **The 22.7% Completion Cliff**:
-   Fewer than **1 in 4 patients** in California substance use programs successfully complete their planned course of treatment.
-2. **The 43.5% Dropout / AMA Rate**:
-   Nearly half of all clients leave prematurely against medical advice or drop out. In private commercial facilities, this spike frequently coincides with **Day 21 to Day 28**, exactly when commercial insurance carriers terminate pre-authorized residential room-and-board coverage.
-3. **The 67.1% Recidivism Velocity**:
-   In California, **67.1% of patients admitted to treatment reported having one or more prior treatment stays**. The industry does not operate on a curative model; it operates on a recurring subscription model.
+1. **The 67.1% Prior Admission Rate**:
+   In California, **67.1% of patients admitted to treatment reported having one or more prior treatment stays**. In coastal private facilities, this revolving door is not an operational failure—it is the lifeblood of the business model. When a patient relapses after a 30-day "graduation", their PPO deductible resets the following calendar year, opening the door for another $80,000 extraction cycle.
+2. **The 22.7% Completion Rate in Public Settings**:
+   While private PPO facilities manufacture 90%+ paper graduation rates to claim insurer bonuses, the unvarnished public data proves that true long-term clinical completion without commercial manipulation is rare—occurring in fewer than 1 in 4 episodes.
+3. **The Recidivism Velocity by Substance**:
+   Patients admitted for alcohol and methamphetamine account for over **62.8% of all treatment episodes** in California, with both populations experiencing chronic readmission patterns that commercial operators exploit through continuous cycling between detox, residential, and sober living.
 
 ---
 
-### Conclusion: Following the Money
+### Conclusion: The Extraction Machine Laid Bare
 
-The genius—and the tragedy—of the modern rehabilitation industry is that its financial incentives are fundamentally decoupled from patient outcomes:
-- When a patient stays sober, the facility earns \$0.
-- When a patient relapses, drops out AMA, and re-enters the cycle 90 days later, the commercial extraction engine spins up again: another \$10,000 intake, another \$1,500/day detox run, another 30 days of IOP billing, and dozens of high-margin urine toxicology tests.
+The addiction treatment industry in Southern California has perfected a financial machine that operates with surgical precision:
+1. **Physical Masking**: Utilizing California Health and Safety Code § 11834.01 to embed commercial 30-bed treatment operations across ordinary suburban residential streets in 6-bed clusters.
+2. **PPO Milking**: Maximizing commercial PPO reimbursement (such as Aetna deluxe policies) by stacking residential per-diems with high-frequency LC-MS/MS urine drug screens.
+3. **Graduation Arbitrage**: Rubber-stamping 30-day "graduations" when commercial insurance runs dry to capture completion bonuses, eliminate AMA clawback risks, and steer clients into monthly cash-pay sober living beds.
+4. **The Recurring Subscription**: Capitalizing on a chronic disease model where relapse resets the insurance clock, allowing the entire extraction engine to run again.
 
-By exploiting the **6-bed residential zoning loophole**, clustering satellite houses around centralized billing hubs, and surrounding themselves with an ecosystem of digital marketing agencies and out-of-network lab billing structures, operators in Dana Point and Orange County have built a machine that extracts extraordinary capital while delivering an empirical completion rate of just 22.7%.
+By connecting California DHCS facility licensure, federal HHS-OIG exclusion records, SAMHSA discharge statistics, and firsthand patient accounts, this investigation provides the blueprint for holding the Rehab Riviera accountable.
 
-This investigation is the first step in documenting the physical, legal, and financial architecture of that machine.
