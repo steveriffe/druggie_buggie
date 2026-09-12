@@ -242,6 +242,24 @@ def export_dashboard_data():
             "hostage_ticket_rule": "Paid return transport home (1,400+ miles away) is strictly conditioned on completing the facility's designated graduation date (Day 30).",
             "early_exit_penalty": "Leaving prior to graduation / leaving AMA revokes paid travel home, geographically stranding the patient in coastal California without resources.",
             "coercive_leverage": "Patients are effectively forced to stay to avoid being left homeless 1,400 miles from home, guaranteeing the facility can extract the full 30 days of insurance benefits."
+        },
+        "sober_living_bundle": {
+            "pitch": "Housing (basically) covered by insurance upon graduation",
+            "mechanism": "Free or subsidized sober living bed contingent upon enrolling in facility's Intensive Outpatient Program (IOP) 3–5 days/week",
+            "financial_math": "IOP per-diems ($350–$600/day) + 2–3x weekly UDS ($1,500–$2,500/panel) generates $8k–$15k/mo in PPO billing against a bed overhead of $600–$900/mo",
+            "statutory_violation": "California Insurance Frauds Prevention Act (Ins. Code § 1871.7) & EKRA (18 U.S.C. § 220) - Illegal bed kickback / patient steering"
+        },
+        "nicotine_economy": {
+            "provision": "Free communal rolling tobacco (Bugler/Top pouches) and rolling papers distributed on site",
+            "tactical_purpose": "Neurochemical pacification to soothe withdrawal irritability and anxiety, preventing premature AMA exits between group blocks",
+            "clinical_paradox": "State-licensed recovery center actively fostering and entrenching cigarette and vaping dependencies to manage bed census"
+        },
+        "calibrated_attrition": {
+            "coastal_ppo_ama_pct": 25.0,
+            "coastal_ppo_grad_pct": 75.0,
+            "public_teds_ama_pct": 43.5,
+            "public_teds_grad_pct": 22.7,
+            "re_entry_pipeline": "High velocity: significant proportion of graduates re-enter treatment within 12–24 months upon benefit reset"
         }
     }
 
